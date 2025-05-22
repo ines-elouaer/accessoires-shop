@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Liste des Accessoires</title>
+
+ 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
+
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .background {
+      background-image: url('assets/image/back15.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      min-height: 100vh;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 15px;
+    }
+
+    .image-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .image-row img {
+      height: 100px;
+      width: auto;
+      border-radius: 10px;
+      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .image-row img:hover {
+      transform: scale(1.05);
+    }
+
+    .accessoires-container {
+      width: 100%;
+      max-width: 1000px;
+      background-color: rgba(241, 228, 220, 0.95);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      color: #5c460f;
+    }
+
+    .search-box input {
+      padding-left: 2.2rem;
+      height: 38px;
+      font-size: 0.95rem;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/622/622669.png');
+      background-size: 18px;
+      background-repeat: no-repeat;
+      background-position: 10px center;
+      border: 1px solid rgba(92, 70, 15, 0.6);
+      border-radius: 30px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-card {
+      min-height: 400px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: white;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 1px solid #eee;
+    }
+
+    .product-info {
+      padding: 12px;
+      flex-grow: 1;
+    }
+
+    .product-info h5 {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #5c460f;
+    }
+
+    .product-info .price {
+      font-size: 1.1rem;
+      color: #504602;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .btn-warning,
+    .btn-danger {
+      background-color: rgba(92, 70, 15, 1) !important;
+      border: 2px solid #5c460f !important;
+      color: white !important;
+    }
+
+    .btn-warning:hover,
+    .btn-danger:hover {
+      background-color: rgba(92, 70, 15, 0.85) !important;
+      border-color: #5c460f !important;
+      color: white !important;
+    }
+
+    .pagination {
+      justify-content: center;
+    }
+
+    .pagination .page-link {
+      background-color: #5c460f;
+      color: white;
+      border-radius: 50px;
+    }
+
+    .pagination .page-item.active .page-link {
+      background-color: #2c3e50;
+    }
+
+    @media (max-width: 768px) {
+      .product-card {
+        min-height: auto;
+      }
+
+      .product-card img {
+        height: 180px;
+      }
+
+      .image-row img {
+        height: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background">
+    <div class="image-row">
+      <img src="assets/image/back2.png" alt="image 1">
+      <img src="assets/image/back3.png" alt="image 2">
+      <img src="assets/image/back4.png" alt="image 3">
+      <img src="assets/image/back5.png" alt="image 4">
+      <img src="assets/image/back6.png" alt="image 5">
+      <img src="assets/image/back4.png" alt="image 6">
+      <img src="assets/image/back5.png" alt="image 7">
+      <img src="assets/image/back6.png" alt="image 8">
+    </div>
+
+    <div class="accessoires-container">
+      <div class="mb-4 search-box">
+        <input type="text" [(ngModel)]="searchTerm" (input)="filterAccessoires()"
+          placeholder="Rechercher par nom..." class="form-control form-control-sm shadow-sm rounded-pill">
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 mb-4" *ngFor="let acc of paginatedAccessoires">
+          <div class="product-card">
+            <img *ngIf="acc.image" [src]="'http://localhost:3000/uploads/' + acc.image" alt="image" />
+            <div class="product-info">
+              <h5>{{ acc.nom }}</h5>
+              <p>{{ acc.description }}</p>
+              <p class="price">{{ acc.prix }} DT</p>
+              <div class="btn-group">
+                <a [routerLink]="['/modifier', acc._id]" class="btn btn-warning btn-sm rounded-pill">
+                  <i class="bi bi-pencil-fill"></i> Modifier
+                </a>
+                <button (click)="supprimer(acc._id)" class="btn btn-outline-marron btn-sm rounded-pill">
+                  <i class="bi bi-trash-fill"></i> Supprimer
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="mt-4">
+        <ul class="pagination">
+          <li class="page-item" [class.disabled]="currentPage === 1">
+            <button class="page-link" (click)="changePage(currentPage - 1)">
+              <i class="bi bi-chevron-left"></i>
+            </button>
+          </li>
+          <li class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index"
+              [class.active]="currentPage === (i + 1)">
+            <button class="page-link" (click)="changePage(i + 1)">
+              {{ i + 1 }}
+            </button>
+          </li>
+          <li class="page-item" [class.disabled]="currentPage === totalPages">
+            <button class="page-link" (click)="changePage(currentPage + 1)">
+              <i class="bi bi-chevron-right"></i>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ajouter un Accessoire</title>
+
+ 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+  
+  <style>
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .background {
+      background-image: url('assets/image/back15.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      min-height: 100vh;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 15px;
+      background-color: rgba(241, 228, 220, 0.95);
+    }
+
+    .welcome-box {
+      width: 70%;
+      max-width: 700px;
+      height: 100px;
+      background-color: rgba(92, 70, 15, 0.823);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .welcome-box h1 {
+      font-size: 1.8rem;
+      text-shadow: 1px 1px 3px rgba(26, 19, 10, 0.6);
+    }
+
+    .form-container {
+      width: 70%;
+      max-width: 700px;
+      background-color: rgba(92, 70, 15, 0.15);
+      border: 1px solid rgba(92, 70, 15, 0.6);
+      padding: 20px;
+      border-radius: 8px;
+      color: white;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-container h2 {
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      text-align: center;
+      color: rgba(92, 70, 15, 0.9);
+    }
+
+    .form-container .form-control {
+      font-size: 0.9rem;
+      padding: 6px 10px;
+    }
+
+    .form-container .form-label {
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+      color: rgba(92, 70, 15, 0.823);
+    }
+
+    .btn-primary {
+      background-color: rgba(92, 70, 15, 0.823);
+      border-color: rgba(92, 70, 15, 0.823);
+      padding: 8px 16px;
+      font-size: 1rem;
+    }
+
+    .btn-primary:hover {
+      background-color: rgba(92, 70, 15, 1);
+    }
+
+    @media (max-width: 768px) {
+      .form-container {
+        width: 90%;
+        padding: 15px;
+      }
+
+      .welcome-box {
+        width: 90%;
+        height: auto;
+      }
+
+      .welcome-box h1 {
+        font-size: 1.4rem;
+      }
+
+      .form-container h2 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background">
+   
+    <div class="welcome-box">
+      <h1>Ajouter un Accessoire</h1>
+    </div>
+
+    
+    <div class="form-container">
+      <h2 class="mb-4 text-center text-primary">
+        <h2>Donnez votre touche à l'accessoire</h2>
+      </h2>
+
+      <form>
+        <div class="mb-3">
+          <label class="form-label"><i class="bi bi-tag-fill"></i> Nom</label>
+          <input type="text" class="form-control" placeholder="Nom de l'accessoire">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label"><i class="bi bi-pencil-square"></i> Description</label>
+          <textarea class="form-control" placeholder="Décrivez l'accessoire"></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label"><i class="bi bi-currency-dollar"></i> Prix (DT)</label>
+          <input type="number" class="form-control" placeholder="Ex : 25.000">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label"><i class="bi bi-image-fill"></i> Image</label>
+          <input type="file" class="form-control">
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary btn-lg px-5">
+            <i class="bi bi-check-circle-fill me-2"></i>Ajouter
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

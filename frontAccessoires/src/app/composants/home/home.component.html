@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AccessoiresApp</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    
+    .background {
+      background-image: url('assets/image/back15.png'); 
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      height: 100vh; 
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .welcome-box {
+      width: 80%;
+      height: 150px;
+      background-color: rgba(92, 70, 15, 0.823);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+
+    .welcome-box h1 {
+      font-size: 2rem;
+      text-shadow: 2px 2px 4px rgba(26, 19, 10, 0.7);
+    }
+
+  
+    .image-row {
+      display: flex;
+      flex-wrap: wrap; 
+      justify-content: center; 
+      gap: 15px; 
+      margin-top: 20px;
+    }
+
+    .image-row img {
+      width: 18%; 
+      height: auto;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+  
+    @media (max-width: 768px) {
+      .image-row img {
+        width: 30%; 
+      }
+    }
+
+    .btn-brown {
+      background-color: rgba(92, 70, 15, 0.823); 
+      color: white;
+    }
+
+    .btn-brown-outline {
+      border: 2px solid rgba(92, 70, 15, 0.823); 
+      color: rgba(92, 70, 15, 0.823);
+    }
+
+    
+    .btn-custom-size {
+      width: 250px; 
+      height: 50px;
+      font-size: 1.25rem; 
+      padding: 10px; 
+    }
+  </style>
+</head>
+<body>
+  <div class="background">
+ 
+    <div class="welcome-box">
+      <h1>Bienvenue dans l’univers chic des accessoires</h1>
+    </div>
+
+    <div class="image-row">
+      <img src="assets/image/back2.png" alt="image 1">
+      <img src="assets/image/back3.png" alt="image 2">
+      <img src="assets/image/back4.png" alt="image 3">
+      <img src="assets/image/back5.png" alt="image 4">
+      <img src="assets/image/back6.png" alt="image 5">
+    </div>
+    
+
+    <div class="mt-4 d-flex justify-content-center gap-3">
+  
+      <a routerLink="/ajouter" class="btn btn-brown btn-custom-size">Ajouter un Accessoire</a>
+   
+      <a routerLink="/liste" class="btn btn-brown-outline btn-custom-size">Voir la Liste</a>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

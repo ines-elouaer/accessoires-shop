@@ -1,0 +1,12 @@
+.btn-outline-marron {
+  background-color: transparent;
+  color: #5c460f;
+  border: 2px solid #5c460f;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-marron:hover {
+  background-color: rgba(92, 70, 15, 0.1);
+  color: #5c460f;
+  border-color: #5c460f;
+}
